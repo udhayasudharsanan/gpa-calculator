@@ -1,0 +1,122 @@
+const live = () =>{
+console.log("second html page loaded");
+
+const noOfSub = parseInt(sessionStorage.getItem("noSubjects"));
+
+let nm = noOfSub ;
+console.log("number of subjects selected",nm) ;
+
+const getInp = document.getElementById("noOfInput");
+console.log(getInp);
+const make=(number) =>{
+
+    console.log("make function is running ");
+    
+    getInp.innerHTML += `<div><label for="Sub${number}Grade">Subject <span>${number}</span> Grade</label><input id="Sub${number}Grade" type="" name="Sub${number}Grade" placeholder="A" required /><label for="Sub${number}Cred"> Credits </label><input id="Sub${number}Cred" type="number" name="Sub${number}Cred" placeholder="3" required /></div>`;
+    
+};
+const makeUp = (input) =>{
+    for (let i=0;i<input; i++){
+        make(i);
+        console.log("makeup function is running ");
+    }
+};
+
+const cred=[];
+
+const findCred = ()=>{
+  let  gr = document.getElementsByTagName("input");
+  console.log(gr);
+ 
+   
+  for (let i=0;i<nm;i++) {
+    let cr = document.getElementById(`Sub${i}Cred`);
+    let crdVAl = parseInt(cr.value);
+    cred.push(crdVAl);
+  }
+  return cred;
+};
+
+const grade=[];
+
+const findGrade = ()=>{
+   let grd  = document.getElementsByTagName("input");
+
+   for (let i=0;i<nm;i++){
+    let gr = document.getElementById(`Sub${i}Grade`);
+    let grVal = gr.value;
+    grade.push(grVal);
+    console.log(parseInt(grade[`${i}`]));
+   console.log(grade[`${i}`]);
+
+  }
+  return grade;
+};
+
+
+const convertGrd = ()=>{
+    const crt ={
+        O :10,
+        "A+" :9,
+        A :8,
+        "B+" :7,
+        B :6,
+        C : 5
+    };
+   for(let i=0;i<nm;i++){
+   grade[`${i}`] = crt[grade[`${i}`]];
+   }
+   console.log(grade);
+   play();
+   return grade;
+};
+
+
+
+const findAvg =  ()=>{
+    let sumBth =0;
+    let fin = 0;
+    for(let i=0;i<nm;i++){
+    fin += cred[`${i}`] * grade[`${i}`];
+    sumBth += cred[`${i}`];
+    console.log("multiplied value of both  ",fin);
+    console.log("total credits",sumBth);
+    
+    }
+    return sumBth ? fin / sumBth : 0;
+};
+
+
+const play = ()=>{
+    const ml = document.querySelectorAll("input");
+    
+    ml.forEach((val) => {
+    val.addEventListener("input", () =>{ 
+    sessionStorage.setItem(val.id,val.value)  
+    });   
+  });
+};
+
+
+const start = async ()=>{
+    makeUp(nm);
+    findCred();
+    findGrade();
+    convertGrd();
+    const gpa = findAvg();
+    play();
+    window.sessionStorage.setItem("gpa",gpa);
+    const clc = document.getElementById("sub");
+    clc.addEventListener("click",rel);
+    
+    };
+
+const rel=() =>{
+       window.location.href="result.html";
+};
+
+start();
+
+}
+
+live();
