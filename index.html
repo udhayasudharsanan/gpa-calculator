@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GPA Calculator </title>
-    <link rel="StyleSheet" href="main.css" />
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GPA Calculator</title>
+  <link rel="stylesheet" href="main.css"/>
 </head>
+
 <body>
-    <header>
-       <h1 class="head">GPA Calculator</h1>
-    </header>
-    <main>
-       <form>
-        <div class="getInput"> 
-        <label for="noOfSub"> Enter the No of Subjects</label>
-        </div>
-        <div class="chose">
-        <input id="noOfSub" name= "noOfSub" type="number" value="6" 
-         required />
-        </div>
-       </form>
-    </main>
-    <footer>
-        <div class="sub">
-            <p id="sub"> Submit</p>
-        </div>
-    </footer>
-    <script type="module" src="frstAnother.js"></script>
+  <header>
+    <h1 class="head">GPA Calculator</h1>
+  </header>
+
+  <main>
+    <form id="subjectForm">
+      <div class="getInput"> 
+        <label for="noOfSub">Enter the Number of Subjects (1 to 8):</label>
+      </div>
+      <div class="chose">
+        <input 
+          id="noOfSub" 
+          name="noOfSub" 
+          type="number" 
+          value="6" 
+          min="1" 
+          max="8" 
+          required 
+        />
+      </div>
+    </form>
+  </main>
+
+  <footer>
+    <div class="sub">
+      <!-- Changed to button for better accessibility -->
+      <button id="sub" type="button">Submit</button>
+    </div>
+  </footer>
+
+  <script type="module" src="frstAnother.js"></script>
 </body>
 </html>
