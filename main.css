@@ -147,21 +147,34 @@ form:hover {
     transform: translateY(-5px);
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
 }
-.chose input, .noOfInput input {
-    padding: 14px 20px;
-    font-size: 20px;
-    border-radius: 12px;
+.input-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.input-group label {
+    font-weight: 600;
+    color: steelblue;
+    font-size: 1rem;
+}
+
+.input-group input, .input-group select {
+    padding: 12px 16px;
+    font-size: 18px;
+    border-radius: 10px;
     border: 1px solid #ccc;
     width: 100%;
-    max-width: 200px;
-    transition: 0.3s ease-in-out;
+    box-sizing: border-box;
     background-color: #f9f9f9;
 }
 
-.chose input:focus, .noOfInput input:focus {
-    border-color: steelblue;
-    outline: none;
-    box-shadow: 0 0 8px steelblue;
+@media (max-width: 600px) {
+    .input-group {
+        grid-template-columns: 1fr;
+    }
 }
 
 
